@@ -8,7 +8,7 @@
 
 #import "SDCUrlRouteCenter+DataReload.h"
 
-#import "SDCUrlRouteData.h"
+#import "SDCJLRouteData.h"
 #import "SDCUrlRouteCenter_Protect.h"
 
 @implementation SDCUrlRouteCenter (DataReload)
@@ -75,19 +75,17 @@ WithReloadBlock:(DataReCallBlock)block
         return;
     }
     
-    if ([[SDCUrlRouteData sharedData] isWebUrl:urlkey]) {
-        //跳转的是网页
-        [self goToWeb:urlkey animated:animated URLRedirectType:type];
-    }else
-    {
-        if (!extraParams) {
-            extraParams = [[SDCUrlRouteData sharedData] findParamsContainInUrlKey:urlkey];
-        }
+    [SDCJLRouteData sharedData].routeCallBackBlock = ^(BOOL isWeb, NSString *urlStr, UIViewController *vc) {
         
-        UIViewController *vc = [[SDCUrlRouteData sharedData]findVCWithUrlKey:urlkey extraParams:extraParams];
-        vc.routeReCallBlock = block;
-        [self goToVC:vc animated:animated URLRedirectType:type];
-    }
+        if (isWeb) {
+            [self goToWeb:urlStr animated:animated URLRedirectType:type];
+        }else {
+            vc.routeReCallBlock = block;
+            [self goToVC:vc animated:animated URLRedirectType:type];
+        }
+    };
+    [[SDCJLRouteData sharedData]goRouteWithUrl:urlkey WithExtraParameters:extraParams];
+
 }
 
 

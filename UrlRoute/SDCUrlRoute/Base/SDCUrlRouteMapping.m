@@ -18,7 +18,6 @@
 
 -(NSDictionary *)mappingData {
 
-    
     //这里可以更新动态更新map
     if (!_mappingData) {
         
@@ -28,8 +27,8 @@
         }
     }
     return _mappingData;
-
 }
+
 
 -(void)setMappingFilePath:(NSString *)mappingFilePath {
 

@@ -19,7 +19,7 @@ static char routeReCallBlockKey;
 
 +(instancetype)createdRouteVCWithParams:(NSDictionary *)params
 {
-    return nil;
+    return [[self alloc]init];
 }
 
 
@@ -69,6 +69,10 @@ static char routeReCallBlockKey;
     return objc_getAssociatedObject(self, &routeReCallBlockKey);
 }
 
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+
+}
 
 
 

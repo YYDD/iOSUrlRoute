@@ -12,11 +12,6 @@
 
 NSString* localRouteUrl(NSString *routekey);
 
-//NSString* encodeKeyInNecessary(NSString *key);
-//
-//NSString* decodeKeyInNecessary(NSString *key);
-//
-//BOOL keyIsNecessary(NSString *key);
 
 @interface SDCUrlRouteCenter : NSObject
 

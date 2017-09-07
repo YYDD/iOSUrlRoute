@@ -7,7 +7,7 @@
 //
 
 #import "SDCUrlRouteCenter.h"
-#import "SDCUrlRouteData.h"
+#import "SDCJLRouteData.h"
 
 #import "UIApplication+SDCUrlRoute.h"
 
@@ -15,30 +15,10 @@
 #import "SDCUrlRouteCenter_Config.h"
 
 NSString* localRouteUrl(NSString *routekey) {
-    return [LocalRouteUrlPrefix stringByAppendingString:routekey];
-}
 
-//NSString* encodeKeyInNecessary(NSString *key) {
-//    return [key stringByAppendingString:@"|M"];
-//}
-//
-//NSString* decodeKeyInNecessary(NSString *key) {
-//    
-//    if (![key hasSuffix:@"|M"]) {
-//        return key;
-//    }
-//    return [key substringToIndex:(key.length - 2 - 1)];
-//}
-//
-//
-//BOOL keyIsNecessary(NSString *key) {
-//
-//    if ([key hasSuffix:@"|M"]) {
-//        return YES;
-//    }
-//    return NO;
-//}
+    return routekey;
 
+};
 
 
 @implementation SDCUrlRouteCenter
@@ -82,20 +62,22 @@ NSString* localRouteUrl(NSString *routekey) {
        urlkey = [((NSURL *)urlkey) absoluteString];
     }
     
-    if ([[SDCUrlRouteData sharedData] isWebUrl:urlkey]) {
-        //判断当前的urlKey 是否是 网址
+    
+    [SDCJLRouteData sharedData].routeCallBackBlock = ^(BOOL isWeb, NSString *urlStr, UIViewController *vc) {
+
+        NSLog(@"%s",__func__);
+        NSLog(@"--%d",isWeb);
+        NSLog(@"--%@",urlStr);
+        NSLog(@"--%@",vc);
         
-        NSString *urlStr = [[SDCUrlRouteData sharedData]findUrlWithUrlKey:urlkey extraParams:extraParams];
-        [self goToWeb:urlStr animated:animated URLRedirectType:type];
-    }else
-    {
-        if (!extraParams) {
-            extraParams = [[SDCUrlRouteData sharedData] findParamsContainInUrlKey:urlkey];
-        
+        if (isWeb) {
+            [self goToWeb:urlStr animated:animated URLRedirectType:type];
+        }else {
+            [self goToVC:vc animated:animated URLRedirectType:type];
         }
-        UIViewController *vc = [[SDCUrlRouteData sharedData]findVCWithUrlKey:urlkey extraParams:extraParams];
-        [self goToVC:vc animated:animated URLRedirectType:type];
-    }
+    };
+    [[SDCJLRouteData sharedData]goRouteWithUrl:urlkey WithExtraParameters:extraParams];
+    
 }
 
 
@@ -108,16 +90,34 @@ NSString* localRouteUrl(NSString *routekey) {
 -(void)close:(NSString *)url animated:(BOOL)animated
 {
     
-    if ([UIApplication sharedApplication].currentViewController.navigationController && [UIApplication sharedApplication].currentViewController.navigationController.childViewControllers.count > 1) {
+    if (!url) {
         
-        //才可以理解为是popVC
-        UIViewController *vc = [[SDCUrlRouteData sharedData]findVCWithUrlKey:url extraParams:nil];
-        [self goToVC:vc animated:animated URLRedirectType:kUrlRedirectPop];
-    }else
-    {
-        UIViewController *vc = [[SDCUrlRouteData sharedData]findVCWithUrlKey:url extraParams:nil];
-        [self goToVC:vc animated:animated URLRedirectType:kUrlRedirectDismiss];
+        if ([UIApplication sharedApplication].currentViewController.navigationController && [UIApplication sharedApplication].currentViewController.navigationController.childViewControllers.count > 1) {
+            
+            [self popToVC:nil animated:animated];
+            
+        }else {
+            [self dismissToVC:nil animated:animated];
+        }
+        
+        return;
     }
+    
+    [[SDCJLRouteData sharedData]goRouteWithUrl:url WithExtraParameters:nil];
+    [SDCJLRouteData sharedData].routeCallBackBlock = ^(BOOL isWeb, NSString *urlStr, UIViewController *vc) {
+
+        if (vc) {
+            if ([UIApplication sharedApplication].currentViewController.navigationController && [UIApplication sharedApplication].currentViewController.navigationController.childViewControllers.count > 1) {
+
+                [self goToVC:vc animated:animated URLRedirectType:kUrlRedirectPop];
+
+            }else {
+                
+                [self goToVC:vc animated:animated URLRedirectType:kUrlRedirectDismiss];
+            }
+        }
+    };
+
 }
 
 
@@ -197,23 +197,28 @@ NSString* localRouteUrl(NSString *routekey) {
 }
 
 
-
-
-+(void)addRoutePlistFilePath:(NSString *)filePath {
-
-    [[SDCUrlRouteData sharedData] addMappingFilePath:filePath];
++ (BOOL)registerRoutesWithFile:(NSString *)filePath {
+    
+   return [SDCJLRouteData registerRoutesWithFile:filePath];
 }
 
 
-+(void)addLocalRouteUrlScheme:(NSString *)schemeKey {
+//+(void)addRoutePlistFilePath:(NSString *)filePath {
+//
+////    [[SDCUrlRouteData sharedData] addMappingFilePath:filePath];
+//    
+//}
 
-    [SDCUrlRouteData sharedData].localRouteUrlScheme = schemeKey;
-}
 
-+(void)addThirdRouteUrlScheme:(NSString *)schemeKey {
-
-    [SDCUrlRouteData sharedData].thirdRouteUrlScheme = schemeKey;
-}
+//+(void)addLocalRouteUrlScheme:(NSString *)schemeKey {
+//
+//    [SDCUrlRouteData sharedData].localRouteUrlScheme = schemeKey;
+//}
+//
+//+(void)addThirdRouteUrlScheme:(NSString *)schemeKey {
+//
+//    [SDCUrlRouteData sharedData].thirdRouteUrlScheme = schemeKey;
+//}
 
 
          

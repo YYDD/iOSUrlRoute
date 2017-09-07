@@ -12,25 +12,25 @@
 
 @interface TestViewController()
 
-@property(nonatomic,strong)NSString *valueStr;
+@property(nonatomic,strong)NSString *key;
 
 @end
 
 @implementation TestViewController
 
-+(instancetype)createdRouteVCWithParams:(NSDictionary *)params
-{
-    
-    [super createdRouteVCWithParams:params];
-    
-    TestViewController *vc = [[TestViewController alloc]init];
-    if (params) {
-        NSString *str = params[@"key"];
-        vc.valueStr = str;
-    }
-    return vc;
-
-}
+//+(instancetype)createdRouteVCWithParams:(NSDictionary *)params
+//{
+//    
+//    [super createdRouteVCWithParams:params];
+//    
+//    TestViewController *vc = [[TestViewController alloc]init];
+//    if (params) {
+//        NSString *str = params[@"key"];
+//        vc.valueStr = str;
+//    }
+//    return vc;
+//
+//}
 
 -(void)viewDidLoad
 {
@@ -43,9 +43,9 @@
     self.navigationItem.leftBarButtonItem = item;
     
     
-    if (self.valueStr) {
+    if (self.key) {
         UILabel *label = [[UILabel alloc]init];
-        [label setText:self.valueStr];
+        [label setText:self.key];
         [label setFont:[UIFont systemFontOfSize:32]];
         [label sizeToFit];
         label.center = self.view.center;
@@ -64,7 +64,7 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     if (self.routeReCallBlock) {
-        self.routeReCallBlock(self.valueStr);
+        self.routeReCallBlock(self.key);
     }
 
 }

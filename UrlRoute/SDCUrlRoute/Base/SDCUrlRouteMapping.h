@@ -11,6 +11,9 @@
 @interface SDCUrlRouteMapping : NSObject
 
 
+/**
+ 完整数据
+ */
 @property(nonatomic,strong,readonly)NSDictionary *mappingData;
 
 @property(nonatomic,strong)NSString *mappingFilePath;

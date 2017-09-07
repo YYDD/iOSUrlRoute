@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		180D49101D51849000E2F138 /* SDCUrlRouteCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D49021D51849000E2F138 /* SDCUrlRouteCenter.m */; };
-		180D49111D51849000E2F138 /* SDCUrlRouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D49061D51849000E2F138 /* SDCUrlRouteData.m */; };
 		180D49121D51849000E2F138 /* UIApplication+SDCUrlRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D49081D51849000E2F138 /* UIApplication+SDCUrlRoute.m */; };
 		180D49131D51849000E2F138 /* UIViewController+SDCUrlRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D490A1D51849000E2F138 /* UIViewController+SDCUrlRoute.m */; };
 		180D49141D51849000E2F138 /* SDCUrlRouteFile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 180D490C1D51849000E2F138 /* SDCUrlRouteFile.plist */; };
@@ -19,18 +18,16 @@
 		186CF8C71CA1523B002BBF61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 186CF8C61CA1523B002BBF61 /* Assets.xcassets */; };
 		186CF8CA1CA1523B002BBF61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186CF8C81CA1523B002BBF61 /* LaunchScreen.storyboard */; };
 		186CF8E71CA154BC002BBF61 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CF8E61CA154BC002BBF61 /* TestViewController.m */; };
+		18A1EA411F60E9F8003D4FCA /* SDCJLRouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1EA401F60E9F8003D4FCA /* SDCJLRouteData.m */; };
 		18F4B9251DEFBC3400EBE375 /* SDCUrlRouteMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F4B9241DEFBC3400EBE375 /* SDCUrlRouteMapping.m */; };
-		96E568A81E27638F00311888 /* SDCUrlRouteCenter+VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E568A61E27638F00311888 /* SDCUrlRouteCenter+VC.m */; };
+		6B6418BB27EAFF3036E48AA9 /* libPods-UrlRouteSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA69DB1B5DFE92734262DB2F /* libPods-UrlRouteSample.a */; };
 		96E568C81E2765BC00311888 /* SDCWebManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E568C71E2765BC00311888 /* SDCWebManager.m */; };
-		96E568D11E276DF800311888 /* SDCUrlRouteCenter+ToRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E568D01E276DF800311888 /* SDCUrlRouteCenter+ToRoot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		180D49011D51849000E2F138 /* SDCUrlRouteCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCUrlRouteCenter.h; sourceTree = "<group>"; };
 		180D49021D51849000E2F138 /* SDCUrlRouteCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCUrlRouteCenter.m; sourceTree = "<group>"; };
 		180D49031D51849000E2F138 /* SDCUrlRouteCenter_Protect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCUrlRouteCenter_Protect.h; sourceTree = "<group>"; };
-		180D49051D51849000E2F138 /* SDCUrlRouteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCUrlRouteData.h; sourceTree = "<group>"; };
-		180D49061D51849000E2F138 /* SDCUrlRouteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCUrlRouteData.m; sourceTree = "<group>"; };
 		180D49071D51849000E2F138 /* UIApplication+SDCUrlRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+SDCUrlRoute.h"; sourceTree = "<group>"; };
 		180D49081D51849000E2F138 /* UIApplication+SDCUrlRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+SDCUrlRoute.m"; sourceTree = "<group>"; };
 		180D49091D51849000E2F138 /* UIViewController+SDCUrlRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SDCUrlRoute.h"; sourceTree = "<group>"; };
@@ -51,15 +48,16 @@
 		186CF8CB1CA1523B002BBF61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		186CF8E51CA154BC002BBF61 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		186CF8E61CA154BC002BBF61 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		18A1EA3F1F60E9F8003D4FCA /* SDCJLRouteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCJLRouteData.h; sourceTree = "<group>"; };
+		18A1EA401F60E9F8003D4FCA /* SDCJLRouteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCJLRouteData.m; sourceTree = "<group>"; };
 		18EFD42A1D2B4B1600C908DD /* SDCUrlRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCUrlRoute.h; sourceTree = "<group>"; };
 		18F4B9231DEFBC3400EBE375 /* SDCUrlRouteMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCUrlRouteMapping.h; sourceTree = "<group>"; };
 		18F4B9241DEFBC3400EBE375 /* SDCUrlRouteMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCUrlRouteMapping.m; sourceTree = "<group>"; };
-		96E568A51E27638F00311888 /* SDCUrlRouteCenter+VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDCUrlRouteCenter+VC.h"; sourceTree = "<group>"; };
-		96E568A61E27638F00311888 /* SDCUrlRouteCenter+VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDCUrlRouteCenter+VC.m"; sourceTree = "<group>"; };
+		3B2EE5FB1064FF2C02C54CC9 /* Pods-UrlRouteSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UrlRouteSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UrlRouteSample/Pods-UrlRouteSample.debug.xcconfig"; sourceTree = "<group>"; };
 		96E568C61E2765BC00311888 /* SDCWebManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCWebManager.h; sourceTree = "<group>"; };
 		96E568C71E2765BC00311888 /* SDCWebManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCWebManager.m; sourceTree = "<group>"; };
-		96E568CF1E276DF800311888 /* SDCUrlRouteCenter+ToRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDCUrlRouteCenter+ToRoot.h"; sourceTree = "<group>"; };
-		96E568D01E276DF800311888 /* SDCUrlRouteCenter+ToRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDCUrlRouteCenter+ToRoot.m"; sourceTree = "<group>"; };
+		DA69DB1B5DFE92734262DB2F /* libPods-UrlRouteSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UrlRouteSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA02F3848DAA30C4D07DA2F9 /* Pods-UrlRouteSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UrlRouteSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-UrlRouteSample/Pods-UrlRouteSample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B6418BB27EAFF3036E48AA9 /* libPods-UrlRouteSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,14 +80,14 @@
 				181AA5B31F4AD7810017D029 /* SDCUrlRouteCenter_Config.h */,
 				180D49031D51849000E2F138 /* SDCUrlRouteCenter_Protect.h */,
 				181AA5B21F4AD70D0017D029 /* SDCUrlRouteConfig.h */,
-				180D49051D51849000E2F138 /* SDCUrlRouteData.h */,
-				180D49061D51849000E2F138 /* SDCUrlRouteData.m */,
 				18F4B9231DEFBC3400EBE375 /* SDCUrlRouteMapping.h */,
 				18F4B9241DEFBC3400EBE375 /* SDCUrlRouteMapping.m */,
 				180D49071D51849000E2F138 /* UIApplication+SDCUrlRoute.h */,
 				180D49081D51849000E2F138 /* UIApplication+SDCUrlRoute.m */,
 				180D49091D51849000E2F138 /* UIViewController+SDCUrlRoute.h */,
 				180D490A1D51849000E2F138 /* UIViewController+SDCUrlRoute.m */,
+				18A1EA3F1F60E9F8003D4FCA /* SDCJLRouteData.h */,
+				18A1EA401F60E9F8003D4FCA /* SDCJLRouteData.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -104,10 +103,6 @@
 		180D490D1D51849000E2F138 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
-				96E568A51E27638F00311888 /* SDCUrlRouteCenter+VC.h */,
-				96E568A61E27638F00311888 /* SDCUrlRouteCenter+VC.m */,
-				96E568CF1E276DF800311888 /* SDCUrlRouteCenter+ToRoot.h */,
-				96E568D01E276DF800311888 /* SDCUrlRouteCenter+ToRoot.m */,
 				180D490E1D51849000E2F138 /* SDCUrlRouteCenter+DataReload.h */,
 				180D490F1D51849000E2F138 /* SDCUrlRouteCenter+DataReload.m */,
 			);
@@ -119,6 +114,8 @@
 			children = (
 				186CF8B91CA1523B002BBF61 /* UrlRouteSample */,
 				186CF8B81CA1523B002BBF61 /* Products */,
+				291AA4FBE04A17E026C72F95 /* Pods */,
+				AFA28A582B8AF68E8CED2563 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,6 +173,15 @@
 			path = SDCUrlRoute;
 			sourceTree = "<group>";
 		};
+		291AA4FBE04A17E026C72F95 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B2EE5FB1064FF2C02C54CC9 /* Pods-UrlRouteSample.debug.xcconfig */,
+				FA02F3848DAA30C4D07DA2F9 /* Pods-UrlRouteSample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		96E568B91E2765A300311888 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +191,14 @@
 			path = WebView;
 			sourceTree = SOURCE_ROOT;
 		};
+		AFA28A582B8AF68E8CED2563 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA69DB1B5DFE92734262DB2F /* libPods-UrlRouteSample.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -192,9 +206,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 186CF8CE1CA1523B002BBF61 /* Build configuration list for PBXNativeTarget "UrlRouteSample" */;
 			buildPhases = (
+				B487D30D75C9D76100289C64 /* [CP] Check Pods Manifest.lock */,
 				186CF8B31CA1523B002BBF61 /* Sources */,
 				186CF8B41CA1523B002BBF61 /* Frameworks */,
 				186CF8B51CA1523B002BBF61 /* Resources */,
+				A7D187B7D5B4E6CA15AAA28C /* [CP] Embed Pods Frameworks */,
+				2991A42CCB507AB771168866 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,6 +268,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2991A42CCB507AB771168866 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UrlRouteSample/Pods-UrlRouteSample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7D187B7D5B4E6CA15AAA28C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UrlRouteSample/Pods-UrlRouteSample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B487D30D75C9D76100289C64 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		186CF8B31CA1523B002BBF61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -258,16 +323,14 @@
 			files = (
 				180D49151D51849000E2F138 /* SDCUrlRouteCenter+DataReload.m in Sources */,
 				18F4B9251DEFBC3400EBE375 /* SDCUrlRouteMapping.m in Sources */,
-				180D49111D51849000E2F138 /* SDCUrlRouteData.m in Sources */,
 				186CF8C21CA1523B002BBF61 /* ViewController.m in Sources */,
 				96E568C81E2765BC00311888 /* SDCWebManager.m in Sources */,
 				180D49121D51849000E2F138 /* UIApplication+SDCUrlRoute.m in Sources */,
-				96E568D11E276DF800311888 /* SDCUrlRouteCenter+ToRoot.m in Sources */,
 				186CF8BF1CA1523B002BBF61 /* AppDelegate.m in Sources */,
 				186CF8BC1CA1523B002BBF61 /* main.m in Sources */,
+				18A1EA411F60E9F8003D4FCA /* SDCJLRouteData.m in Sources */,
 				180D49131D51849000E2F138 /* UIViewController+SDCUrlRoute.m in Sources */,
 				186CF8E71CA154BC002BBF61 /* TestViewController.m in Sources */,
-				96E568A81E27638F00311888 /* SDCUrlRouteCenter+VC.m in Sources */,
 				180D49101D51849000E2F138 /* SDCUrlRouteCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +431,7 @@
 		};
 		186CF8CF1CA1523B002BBF61 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B2EE5FB1064FF2C02C54CC9 /* Pods-UrlRouteSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8S48W9HRTF;
@@ -380,6 +444,7 @@
 		};
 		186CF8D01CA1523B002BBF61 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA02F3848DAA30C4D07DA2F9 /* Pods-UrlRouteSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8S48W9HRTF;
