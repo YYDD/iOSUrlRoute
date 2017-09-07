@@ -10,9 +10,11 @@
 #import "SDCJLRouteData.h"
 
 #import "UIApplication+SDCUrlRoute.h"
+#import "UIViewController+SDCUrlRoute.h"
 
 #import "SDCWebManager.h"
 #import "SDCUrlRouteCenter_Config.h"
+#import "SDCUrlRouteCenter_Protect.h"
 
 NSString* localRouteUrl(NSString *routekey) {
 
@@ -62,22 +64,11 @@ NSString* localRouteUrl(NSString *routekey) {
        urlkey = [((NSURL *)urlkey) absoluteString];
     }
     
-    
     [SDCJLRouteData sharedData].routeCallBackBlock = ^(BOOL isWeb, NSString *urlStr, UIViewController *vc) {
 
-        NSLog(@"%s",__func__);
-        NSLog(@"--%d",isWeb);
-        NSLog(@"--%@",urlStr);
-        NSLog(@"--%@",vc);
-        
-        if (isWeb) {
-            [self goToWeb:urlStr animated:animated URLRedirectType:type];
-        }else {
-            [self goToVC:vc animated:animated URLRedirectType:type];
-        }
+        [self goToVC:vc animated:animated URLRedirectType:type];
     };
     [[SDCJLRouteData sharedData]goRouteWithUrl:urlkey WithExtraParameters:extraParams];
-    
 }
 
 
@@ -103,7 +94,6 @@ NSString* localRouteUrl(NSString *routekey) {
         return;
     }
     
-    [[SDCJLRouteData sharedData]goRouteWithUrl:url WithExtraParameters:nil];
     [SDCJLRouteData sharedData].routeCallBackBlock = ^(BOOL isWeb, NSString *urlStr, UIViewController *vc) {
 
         if (vc) {
@@ -117,21 +107,22 @@ NSString* localRouteUrl(NSString *routekey) {
             }
         }
     };
+    [[SDCJLRouteData sharedData]goRouteWithUrl:url WithExtraParameters:nil];
+
 
 }
-
-
 
 
 #pragma mark Method
--(void)goToWeb:(NSString *)urlStr animated:(BOOL)animated URLRedirectType:(UrlRedirectType)type
-{
+
+- (void)goToWeb:(NSString *)urlStr animated:(BOOL)animated URLRedirectType:(UrlRedirectType)type {
+
     UIViewController *vc = [SDCWebManager createWebVCWithUrl:urlStr WithTitle:nil];
-    [self goToVC:vc animated:YES URLRedirectType:kUrlRedirectPush];
+    [self goToVC:vc animated:animated URLRedirectType:type];
 }
 
--(void)goToVC:(UIViewController *)vc animated:(BOOL)animated URLRedirectType:(UrlRedirectType)type
-{
+- (void)goToVC:(UIViewController *)vc animated:(BOOL)animated URLRedirectType:(UrlRedirectType)type {
+
     switch (type) {
         case kUrlRedirectPop:
             [self popToVC:vc animated:animated];
@@ -189,8 +180,6 @@ NSString* localRouteUrl(NSString *routekey) {
 }
 
 
-
-
 -(void)goToErrorVC
 {
     NSLog(@"goToErrorVC");
@@ -201,24 +190,6 @@ NSString* localRouteUrl(NSString *routekey) {
     
    return [SDCJLRouteData registerRoutesWithFile:filePath];
 }
-
-
-//+(void)addRoutePlistFilePath:(NSString *)filePath {
-//
-////    [[SDCUrlRouteData sharedData] addMappingFilePath:filePath];
-//    
-//}
-
-
-//+(void)addLocalRouteUrlScheme:(NSString *)schemeKey {
-//
-//    [SDCUrlRouteData sharedData].localRouteUrlScheme = schemeKey;
-//}
-//
-//+(void)addThirdRouteUrlScheme:(NSString *)schemeKey {
-//
-//    [SDCUrlRouteData sharedData].thirdRouteUrlScheme = schemeKey;
-//}
 
 
          

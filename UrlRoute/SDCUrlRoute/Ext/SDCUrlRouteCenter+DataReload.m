@@ -74,15 +74,11 @@ WithReloadBlock:(DataReCallBlock)block
     if (urlkey.length == 0) {
         return;
     }
-    
+
     [SDCJLRouteData sharedData].routeCallBackBlock = ^(BOOL isWeb, NSString *urlStr, UIViewController *vc) {
-        
-        if (isWeb) {
-            [self goToWeb:urlStr animated:animated URLRedirectType:type];
-        }else {
-            vc.routeReCallBlock = block;
-            [self goToVC:vc animated:animated URLRedirectType:type];
-        }
+
+        vc.routeReCallBlock = block;
+        [self goToVC:vc animated:animated URLRedirectType:type];
     };
     [[SDCJLRouteData sharedData]goRouteWithUrl:urlkey WithExtraParameters:extraParams];
 

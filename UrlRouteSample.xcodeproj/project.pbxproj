@@ -19,6 +19,8 @@
 		186CF8CA1CA1523B002BBF61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186CF8C81CA1523B002BBF61 /* LaunchScreen.storyboard */; };
 		186CF8E71CA154BC002BBF61 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186CF8E61CA154BC002BBF61 /* TestViewController.m */; };
 		18A1EA411F60E9F8003D4FCA /* SDCJLRouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1EA401F60E9F8003D4FCA /* SDCJLRouteData.m */; };
+		18A1EA461F613BD2003D4FCA /* SDCUrlRouteCenter+ToRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1EA431F613BD2003D4FCA /* SDCUrlRouteCenter+ToRoot.m */; };
+		18A1EA471F613BD2003D4FCA /* SDCUrlRouteCenter+VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A1EA451F613BD2003D4FCA /* SDCUrlRouteCenter+VC.m */; };
 		18F4B9251DEFBC3400EBE375 /* SDCUrlRouteMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F4B9241DEFBC3400EBE375 /* SDCUrlRouteMapping.m */; };
 		6B6418BB27EAFF3036E48AA9 /* libPods-UrlRouteSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA69DB1B5DFE92734262DB2F /* libPods-UrlRouteSample.a */; };
 		96E568C81E2765BC00311888 /* SDCWebManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E568C71E2765BC00311888 /* SDCWebManager.m */; };
@@ -50,6 +52,10 @@
 		186CF8E61CA154BC002BBF61 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		18A1EA3F1F60E9F8003D4FCA /* SDCJLRouteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCJLRouteData.h; sourceTree = "<group>"; };
 		18A1EA401F60E9F8003D4FCA /* SDCJLRouteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCJLRouteData.m; sourceTree = "<group>"; };
+		18A1EA421F613BD2003D4FCA /* SDCUrlRouteCenter+ToRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDCUrlRouteCenter+ToRoot.h"; sourceTree = "<group>"; };
+		18A1EA431F613BD2003D4FCA /* SDCUrlRouteCenter+ToRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDCUrlRouteCenter+ToRoot.m"; sourceTree = "<group>"; };
+		18A1EA441F613BD2003D4FCA /* SDCUrlRouteCenter+VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDCUrlRouteCenter+VC.h"; sourceTree = "<group>"; };
+		18A1EA451F613BD2003D4FCA /* SDCUrlRouteCenter+VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDCUrlRouteCenter+VC.m"; sourceTree = "<group>"; };
 		18EFD42A1D2B4B1600C908DD /* SDCUrlRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCUrlRoute.h; sourceTree = "<group>"; };
 		18F4B9231DEFBC3400EBE375 /* SDCUrlRouteMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCUrlRouteMapping.h; sourceTree = "<group>"; };
 		18F4B9241DEFBC3400EBE375 /* SDCUrlRouteMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCUrlRouteMapping.m; sourceTree = "<group>"; };
@@ -105,6 +111,10 @@
 			children = (
 				180D490E1D51849000E2F138 /* SDCUrlRouteCenter+DataReload.h */,
 				180D490F1D51849000E2F138 /* SDCUrlRouteCenter+DataReload.m */,
+				18A1EA421F613BD2003D4FCA /* SDCUrlRouteCenter+ToRoot.h */,
+				18A1EA431F613BD2003D4FCA /* SDCUrlRouteCenter+ToRoot.m */,
+				18A1EA441F613BD2003D4FCA /* SDCUrlRouteCenter+VC.h */,
+				18A1EA451F613BD2003D4FCA /* SDCUrlRouteCenter+VC.m */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -325,6 +335,8 @@
 				18F4B9251DEFBC3400EBE375 /* SDCUrlRouteMapping.m in Sources */,
 				186CF8C21CA1523B002BBF61 /* ViewController.m in Sources */,
 				96E568C81E2765BC00311888 /* SDCWebManager.m in Sources */,
+				18A1EA461F613BD2003D4FCA /* SDCUrlRouteCenter+ToRoot.m in Sources */,
+				18A1EA471F613BD2003D4FCA /* SDCUrlRouteCenter+VC.m in Sources */,
 				180D49121D51849000E2F138 /* UIApplication+SDCUrlRoute.m in Sources */,
 				186CF8BF1CA1523B002BBF61 /* AppDelegate.m in Sources */,
 				186CF8BC1CA1523B002BBF61 /* main.m in Sources */,

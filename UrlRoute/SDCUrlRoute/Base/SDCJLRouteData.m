@@ -11,10 +11,15 @@
 
 #import "SDCUrlRouteMapping.h"
 #import "UIViewController+SDCUrlRoute.h"
+#import "SDCWebManager.h"
+
+typedef void (^RouteCheckBlock)(NSString *routeUrlStr,NSDictionary *parameters);
 
 @interface SDCJLRouteData()
 
 @property(nonatomic,strong)SDCUrlRouteMapping *routeMapping;
+
+@property(nonatomic,copy)RouteCheckBlock routeCheckBlock;
 
 @end
 
@@ -55,14 +60,22 @@
     
     NSString *routePattern = parameters[JLRoutePatternKey];
     
+    if (self.routeCheckBlock) {
+
+        self.routeCheckBlock(routePattern, parameters);
+        return;
+    }
+    
     NSArray *routePatternArray = self.routeMapping.mappingData.allKeys;
     if ([routePatternArray containsObject:routePattern]) {
 
         NSString *className = self.routeMapping.mappingData[routePattern];
         if ([self isWebUrl:className]) {
             //是网页
+            UIViewController *vc = [SDCWebManager createWebVCWithUrl:className WithTitle:nil];
+            vc.routeUrlStr = routePattern;
             if (_routeCallBackBlock) {
-                _routeCallBackBlock(YES,className,nil);
+                _routeCallBackBlock(YES,className,vc);
             }
             
         }else {
@@ -71,13 +84,7 @@
             if (className) {
                 class = NSClassFromString(className);
             }
-            UIViewController *vc = nil;
-            
-#pragma clang diagnostic ignored "-Warc-createdRouteVCWithParams:-leaks"
-            if ([class respondsToSelector:@selector(createdRouteVCWithParams:)]) {
-                vc = [class createdRouteVCWithParams:parameters];
-            }
-            
+            UIViewController *vc = [[UIViewController alloc]init];
             for (NSString *key in parameters) {
                 
                 if ([key isEqualToString:JLRoutePatternKey] || [key isEqualToString:JLRouteURLKey] || [key isEqualToString:JLRouteSchemeKey] || [key isEqualToString:JLRouteWildcardComponentsKey] || [key isEqualToString:JLRoutesGlobalRoutesScheme]) {
@@ -87,6 +94,7 @@
                 [vc setValue:parameters[key] forKey:key];
             }
             
+            vc.routeUrlStr = routePattern;
             if (_routeCallBackBlock) {
                 _routeCallBackBlock(NO,nil,vc);
             }
@@ -95,7 +103,7 @@
 }
 
 -(void)goRouteWithUrl:(NSString *)urlStr WithExtraParameters:(NSDictionary *)param {
-
+        
     if ([[JLRoutes globalRoutes]canRouteURL:[NSURL URLWithString:urlStr]]) {
         [[JLRoutes globalRoutes]routeURL:[NSURL URLWithString:urlStr] withParameters:param];
     }else {
@@ -120,6 +128,12 @@
                 urlStr = [urlStr stringByAppendingString:[NSString stringWithFormat:@"%@=%@",key,param[key]?:@""]];
             }
             
+            UIViewController *vc = [SDCWebManager createWebVCWithUrl:urlStr WithTitle:nil];
+            vc.routeUrlStr = urlStr;
+            if (_routeCallBackBlock) {
+                _routeCallBackBlock(YES,urlStr,vc);
+            }
+            
         }else {
             //错误页面
             if (_routeCallBackBlock) {
@@ -127,9 +141,20 @@
             }
         }
     }
-    
 }
 
+
+- (void)checkRouteWithUrl:(NSString *)urlStr WithExtraParameters:(NSDictionary *)param  WithBlock:(void (^)(NSString *routeUrlStr))block{
+
+    self.routeCheckBlock = ^(NSString *routeUrlStr, NSDictionary *parameters) {
+      
+        if (block) {
+            block(routeUrlStr);
+        }
+    };
+    [self goRouteWithUrl:urlStr WithExtraParameters:param];
+
+}
 
 
 //读取对应的列表

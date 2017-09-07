@@ -28,5 +28,7 @@ typedef void (^DataReCallBlock)(id customValue);
 
 @property(nonatomic,copy)DataReCallBlock routeReCallBlock;
 
+@property(nonatomic,strong)NSString *routeUrlStr;
+
 
 @end

@@ -16,9 +16,11 @@ typedef void(^RouteCallBack)(BOOL isWeb,NSString *urlStr,UIViewController *vc);
 
 + (BOOL)registerRoutesWithFile:(NSString *)filePath;
 
-@property(nonatomic,copy)RouteCallBack routeCallBackBlock;
-
 - (void)goRouteWithUrl:(NSString *)urlStr WithExtraParameters:(NSDictionary *)param;
+
+- (void)checkRouteWithUrl:(NSString *)urlStr WithExtraParameters:(NSDictionary *)param WithBlock:(void(^)(NSString *routeUrlStr))block;
+
+@property(nonatomic,copy)RouteCallBack routeCallBackBlock;
 
 
 @end
