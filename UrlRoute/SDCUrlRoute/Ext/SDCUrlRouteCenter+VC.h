@@ -13,4 +13,6 @@
 -(void)getViewControllerWithUrlStr:(NSString *)urlStr WithParameters:(NSDictionary *)param WithBlock:(void (^)(UIViewController *vc))block;
 
 
+- (void)addRoots:(NSArray <NSString *>*)urlArr WithParametersArr:(NSArray <NSDictionary *>*)paramArr WithBlock:(void (^)(NSArray <UIViewController *>*vcArr))block;
+
 @end
