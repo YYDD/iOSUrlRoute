@@ -60,28 +60,9 @@ if(nav == nil){[[UIApplication sharedApplication].currentViewController dismissV
 
 
 
+//webview的标题
+static const NSString *sdcNavTitleKey = @"navTitle";
 
-
-
-/**
- app内跳转scheme
-
- @return schemekey
- */
-#define LocalRouteUrlPrefix [SDCUrlRouteData sharedData].localRouteUrlScheme
-
-
-/**
- app外跳转scheme
-
- @return schemekey
- */
-#define ThirdRouteUrlPrefix [SDCUrlRouteData sharedData].thirdRouteUrlScheme
-
-
-//配置跳转的key
-#define RouteToTestVC               @"toTestVC" /**<进入测试页面 */
-#define RouteToTestWeb              @"toTestWeb"    /**< 进入测试的网页 */
 
 
 

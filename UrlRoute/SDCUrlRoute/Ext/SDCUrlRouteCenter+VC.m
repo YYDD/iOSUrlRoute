@@ -32,9 +32,11 @@
 - (void)addRoots:(NSArray <NSString *>*)urlArr WithParametersArr:(NSArray <NSDictionary *>*)paramArr WithBlock:(void (^)(NSArray <UIViewController *>*vcArr))block {
 
     NSMutableArray *mutVCArr = [[NSMutableArray alloc]init];
-    __block NSInteger actionCount = 0;
     for (int i = 0; i < urlArr.count; i ++) {
         [mutVCArr addObject:[NSString stringWithFormat:@"%d",i]];
+    }
+    __block NSInteger actionCount = 0;
+    for (int i = 0; i < urlArr.count; i ++) {
         NSString *urlStr = urlArr[i];
         NSDictionary *param = nil;
         if (paramArr.count > i) {

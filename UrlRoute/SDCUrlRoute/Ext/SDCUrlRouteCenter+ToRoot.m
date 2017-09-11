@@ -27,7 +27,7 @@
                 UITabBarController *tab=(UITabBarController *)vc;
                 for (UINavigationController *nav in tab.viewControllers) {
                     UIViewController *navRootVC = [nav.childViewControllers firstObject];
-                    if (navRootVC.routeUrlStr && [nav.routeUrlStr isEqualToString:routeUrlStr]) {
+                    if (navRootVC.routeUrlStr && [navRootVC.routeUrlStr isEqualToString:routeUrlStr]) {
                         NSInteger index = [tab.viewControllers indexOfObject:nav];
                         [tab setSelectedIndex:index];
                     }

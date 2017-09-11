@@ -12,6 +12,7 @@
 #import "SDCUrlRouteMapping.h"
 #import "UIViewController+SDCUrlRoute.h"
 #import "SDCWebManager.h"
+#import "SDCUrlRouteConfig.h"
 
 typedef void (^RouteCheckBlock)(NSString *routeUrlStr,NSDictionary *parameters);
 
@@ -63,6 +64,7 @@ typedef void (^RouteCheckBlock)(NSString *routeUrlStr,NSDictionary *parameters);
     if (self.routeCheckBlock) {
 
         self.routeCheckBlock(routePattern, parameters);
+        self.routeCheckBlock = nil;
         return;
     }
     
@@ -72,8 +74,11 @@ typedef void (^RouteCheckBlock)(NSString *routeUrlStr,NSDictionary *parameters);
         NSString *className = self.routeMapping.mappingData[routePattern];
         if ([self isWebUrl:className]) {
             //是网页
-            UIViewController *vc = [SDCWebManager createWebVCWithUrl:className WithTitle:nil];
+
+            NSString *titleStr = parameters[sdcNavTitleKey];
+            UIViewController *vc = [SDCWebManager createWebVCWithUrl:className WithTitle:titleStr];
             vc.routeUrlStr = routePattern;
+            
             if (_routeCallBackBlock) {
                 _routeCallBackBlock(YES,className,vc);
             }
@@ -133,7 +138,8 @@ typedef void (^RouteCheckBlock)(NSString *routeUrlStr,NSDictionary *parameters);
                 urlStr = [urlStr stringByAppendingString:[NSString stringWithFormat:@"%@=%@",key,param[key]?:@""]];
             }
             
-            UIViewController *vc = [SDCWebManager createWebVCWithUrl:urlStr WithTitle:nil];
+            NSString *titleStr = param[sdcNavTitleKey];
+            UIViewController *vc = [SDCWebManager createWebVCWithUrl:urlStr WithTitle:titleStr];
             vc.routeUrlStr = urlStr;
             if (_routeCallBackBlock) {
                 _routeCallBackBlock(YES,urlStr,vc);
