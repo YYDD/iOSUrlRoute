@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   spec.name         = 'iOSUrlRoute'
   spec.version      = '1.0'
-  spec.ios.deployment_target = '8.0'
+  spec.ios.deployment_target = '7.0'
   spec.license      = { :type => 'BSD' }
   spec.homepage     = 'https://github.com/YYDD/iOSUrlRoute.git'
   spec.authors      = { 'YYDD' => '615689375@qq.com' }

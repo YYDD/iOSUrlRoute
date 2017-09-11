@@ -84,7 +84,12 @@ typedef void (^RouteCheckBlock)(NSString *routeUrlStr,NSDictionary *parameters);
             if (className) {
                 class = NSClassFromString(className);
             }
-            UIViewController *vc = [[UIViewController alloc]init];
+            UIViewController *vc = nil;
+#pragma clang diagnostic ignored "-Warc-createdRouteVCWithParams:-leaks"
+            if ([class respondsToSelector:@selector(createdRouteVCWithParams:)]) {
+                vc = [class createdRouteVCWithParams:nil];
+            }
+            
             for (NSString *key in parameters) {
                 
                 if ([key isEqualToString:JLRoutePatternKey] || [key isEqualToString:JLRouteURLKey] || [key isEqualToString:JLRouteSchemeKey] || [key isEqualToString:JLRouteWildcardComponentsKey] || [key isEqualToString:JLRoutesGlobalRoutesScheme]) {
@@ -144,7 +149,7 @@ typedef void (^RouteCheckBlock)(NSString *routeUrlStr,NSDictionary *parameters);
 }
 
 
-- (void)checkRouteWithUrl:(NSString *)urlStr WithExtraParameters:(NSDictionary *)param  WithBlock:(void (^)(NSString *routeUrlStr))block{
+- (void)checkRouteWithUrl:(NSString *)urlStr WithExtraParameters:(NSDictionary *)param WithBlock:(void (^)(NSString *routeUrlStr))block{
 
     self.routeCheckBlock = ^(NSString *routeUrlStr, NSDictionary *parameters) {
       

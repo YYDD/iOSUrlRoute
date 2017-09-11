@@ -20,9 +20,8 @@ static char routeUrlStrKey;
 
 +(instancetype)createdRouteVCWithParams:(NSDictionary *)params
 {
-    return nil;
+    return [[self alloc]init];
 }
-
 
 
 +(void)load
