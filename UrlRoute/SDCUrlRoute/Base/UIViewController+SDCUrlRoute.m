@@ -11,17 +11,17 @@
 #import <objc/runtime.h>
 
 static char routeReCallBlockKey;
+static char routeUrlStrKey;
 
 @implementation UIViewController (SDCUrlRoute)
 
 @dynamic routeReCallBlock;
-
+@dynamic routeUrlStr;
 
 +(instancetype)createdRouteVCWithParams:(NSDictionary *)params
 {
-    return nil;
+    return [[self alloc]init];
 }
-
 
 
 +(void)load
@@ -55,6 +55,10 @@ static char routeReCallBlockKey;
 
 
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    
+}
+
 
 #pragma mark routeReCallBlock set&get
 
@@ -70,7 +74,17 @@ static char routeReCallBlockKey;
 }
 
 
+#pragma mark routeUrlStr set&get
 
+- (void)setRouteUrlStr:(NSString *)routeUrlStr {
+
+    objc_setAssociatedObject(self, &routeUrlStrKey, routeUrlStr, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSString *)routeUrlStr {
+
+    return objc_getAssociatedObject(self, &routeUrlStrKey);
+}
 
 
 @end

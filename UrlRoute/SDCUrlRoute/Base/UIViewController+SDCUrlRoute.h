@@ -23,7 +23,12 @@ typedef void (^DataReCallBlock)(id customValue);
 +(instancetype)createdRouteVCWithParams:(NSDictionary *)params;
 
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key;
+
+
 @property(nonatomic,copy)DataReCallBlock routeReCallBlock;
+
+@property(nonatomic,strong)NSString *routeUrlStr;
 
 
 @end

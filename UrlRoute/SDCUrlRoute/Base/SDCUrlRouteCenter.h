@@ -12,6 +12,7 @@
 
 NSString* localRouteUrl(NSString *routekey);
 
+
 @interface SDCUrlRouteCenter : NSObject
 
 +(SDCUrlRouteCenter *)sharedCenter;

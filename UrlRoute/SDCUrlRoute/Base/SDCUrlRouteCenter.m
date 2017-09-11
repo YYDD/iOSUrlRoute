@@ -7,15 +7,20 @@
 //
 
 #import "SDCUrlRouteCenter.h"
-#import "SDCUrlRouteData.h"
+#import "SDCJLRouteData.h"
 
 #import "UIApplication+SDCUrlRoute.h"
+#import "UIViewController+SDCUrlRoute.h"
 
-NSString* localRouteUrl(NSString *routekey)
-{
-    return [LocalRouteUrlPrefix stringByAppendingString:routekey];
-}
+#import "SDCWebManager.h"
+#import "SDCUrlRouteCenter_Config.h"
+#import "SDCUrlRouteCenter_Protect.h"
 
+NSString* localRouteUrl(NSString *routekey) {
+
+    return routekey;
+
+};
 
 
 @implementation SDCUrlRouteCenter
@@ -59,20 +64,11 @@ NSString* localRouteUrl(NSString *routekey)
        urlkey = [((NSURL *)urlkey) absoluteString];
     }
     
-    if ([[SDCUrlRouteData sharedData] isWebUrl:urlkey]) {
-        //判断当前的urlKey 是否是 网址
-        
-        NSString *urlStr = [[SDCUrlRouteData sharedData]findUrlWithUrlKey:urlkey extraParams:extraParams];
-        [self goToWeb:urlStr animated:animated URLRedirectType:type];
-    }else
-    {
-        if (!extraParams) {
-            extraParams = [[SDCUrlRouteData sharedData] findParamsContainInUrlKey:urlkey];
-        }
-        
-        UIViewController *vc = [[SDCUrlRouteData sharedData]findVCWithUrlKey:urlkey extraParams:extraParams];
+    [SDCJLRouteData sharedData].routeCallBackBlock = ^(BOOL isWeb, NSString *urlStr, UIViewController *vc) {
+
         [self goToVC:vc animated:animated URLRedirectType:type];
-    }
+    };
+    [[SDCJLRouteData sharedData]goRouteWithUrl:urlkey WithExtraParameters:extraParams];
 }
 
 
@@ -85,31 +81,48 @@ NSString* localRouteUrl(NSString *routekey)
 -(void)close:(NSString *)url animated:(BOOL)animated
 {
     
-    if ([UIApplication sharedApplication].currentViewController.navigationController && [UIApplication sharedApplication].currentViewController.navigationController.childViewControllers.count > 1) {
+    if (!url) {
         
-        //才可以理解为是popVC
-        UIViewController *vc = [[SDCUrlRouteData sharedData]findVCWithUrlKey:url extraParams:nil];
-        [self goToVC:vc animated:animated URLRedirectType:kUrlRedirectPop];
-    }else
-    {
-        UIViewController *vc = [[SDCUrlRouteData sharedData]findVCWithUrlKey:url extraParams:nil];
-        [self goToVC:vc animated:animated URLRedirectType:kUrlRedirectDismiss];
+        if ([UIApplication sharedApplication].currentViewController.navigationController && [UIApplication sharedApplication].currentViewController.navigationController.childViewControllers.count > 1) {
+            
+            [self popToVC:nil animated:animated];
+            
+        }else {
+            [self dismissToVC:nil animated:animated];
+        }
+        
+        return;
     }
+    
+    [SDCJLRouteData sharedData].routeCallBackBlock = ^(BOOL isWeb, NSString *urlStr, UIViewController *vc) {
+
+        if (vc) {
+            if ([UIApplication sharedApplication].currentViewController.navigationController && [UIApplication sharedApplication].currentViewController.navigationController.childViewControllers.count > 1) {
+
+                [self goToVC:vc animated:animated URLRedirectType:kUrlRedirectPop];
+
+            }else {
+                
+                [self goToVC:vc animated:animated URLRedirectType:kUrlRedirectDismiss];
+            }
+        }
+    };
+    [[SDCJLRouteData sharedData]goRouteWithUrl:url WithExtraParameters:nil];
+
+
 }
-
-
 
 
 #pragma mark Method
--(void)goToWeb:(NSString *)urlStr animated:(BOOL)animated URLRedirectType:(UrlRedirectType)type
-{
 
-    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:urlStr]];
-    
+- (void)goToWeb:(NSString *)urlStr animated:(BOOL)animated URLRedirectType:(UrlRedirectType)type {
+
+    UIViewController *vc = [SDCWebManager createWebVCWithUrl:urlStr WithTitle:nil];
+    [self goToVC:vc animated:animated URLRedirectType:type];
 }
 
--(void)goToVC:(UIViewController *)vc animated:(BOOL)animated URLRedirectType:(UrlRedirectType)type
-{
+- (void)goToVC:(UIViewController *)vc animated:(BOOL)animated URLRedirectType:(UrlRedirectType)type {
+
     switch (type) {
         case kUrlRedirectPop:
             [self popToVC:vc animated:animated];
@@ -167,12 +180,17 @@ NSString* localRouteUrl(NSString *routekey)
 }
 
 
-
-
 -(void)goToErrorVC
 {
     NSLog(@"goToErrorVC");
 }
+
+
++ (BOOL)registerRoutesWithFile:(NSString *)filePath {
+    
+   return [SDCJLRouteData registerRoutesWithFile:filePath];
+}
+
 
          
 @end

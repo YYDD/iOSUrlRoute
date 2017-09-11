@@ -15,12 +15,6 @@
 
 @implementation ViewController
 
-+(instancetype)createdRouteVCWithParams:(NSDictionary *)params
-{
-    ViewController *vc = [[ViewController alloc]init];
-    return vc;
-    
-}
 
 
 - (void)viewDidLoad {
