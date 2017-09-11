@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   spec.summary      = 'HeLian iOS Tools'
   spec.source       = { :git => 'https://github.com/YYDD/iOSUrlRoute.git'}
   spec.source_files = 'UrlRoute/*.{h,m}'
-  spec.dependency 'JLRoutes'
+  spec.dependency 'JLRoutes', '~> 2.0.5'
   
 
   spec.subspec 'Base' do |s|
