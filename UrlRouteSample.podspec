@@ -20,4 +20,9 @@ Pod::Spec.new do |spec|
     s.public_header_files = 'UrlRoute/SDCUrlRoute/Ext/*.h'
   end
   
+  spec.subspec 'WebView' do |s|
+    s.source_files = 'UrlRoute/SDCUrlRoute/WebView/*.{h,m}'
+    s.public_header_files = 'UrlRoute/SDCUrlRoute/WebView/*.h'
+  end
+
 end
