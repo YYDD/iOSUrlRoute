@@ -13,10 +13,21 @@
 
 -(void)setCurrentViewController:(UIViewController *)currentViewController
 {
-    //补丁  怕addview之后
+    
+    if (!currentViewController) {
+        //set nil的时候 移除
+        objc_setAssociatedObject(self, @selector(currentViewController), nil, OBJC_ASSOCIATION_ASSIGN);
+    }
+    
+    
+    if (![currentViewController isKindOfClass:[UIViewController class]]) {
+        return;
+    }
+    
     if (!currentViewController.navigationController) {
         return;
     }
+    
     
     objc_setAssociatedObject(self, @selector(currentViewController), currentViewController, OBJC_ASSOCIATION_ASSIGN);
 }

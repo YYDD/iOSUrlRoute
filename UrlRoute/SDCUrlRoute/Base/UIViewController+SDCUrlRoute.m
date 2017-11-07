@@ -27,13 +27,15 @@ static char routeUrlStrKey;
 +(void)load
 {
     //swizzle方法调换
-    [UIViewController swizzleViewWillAppear];
+    [UIViewController swizzleViewWillDisappear];
+    [UIViewController swizzleViewDidLoad];
 }
 
-+(void)swizzleViewWillAppear
+
++(void)swizzleViewDidLoad
 {
-    SEL originalSelector = @selector(viewWillAppear:);
-    SEL swizzleSelector = @selector(trick_viewWillAppear:);
+    SEL originalSelector = @selector(viewDidLoad);
+    SEL swizzleSelector = @selector(trick_viewDidLoad);
     
     Method originalMethod = class_getInstanceMethod([self class], originalSelector);
     Method swizzleMethod = class_getInstanceMethod([self class], swizzleSelector);
@@ -41,17 +43,36 @@ static char routeUrlStrKey;
     method_exchangeImplementations(originalMethod, swizzleMethod);
 }
 
--(void)trick_viewWillAppear:(BOOL)animated
++(void)swizzleViewWillDisappear
 {
+    SEL originalSelector = @selector(viewWillDisappear:);
+    SEL swizzleSelector = @selector(trick_viewWillDisappear:);
+    
+    Method originalMethod = class_getInstanceMethod([self class], originalSelector);
+    Method swizzleMethod = class_getInstanceMethod([self class], swizzleSelector);
+    
+    method_exchangeImplementations(originalMethod, swizzleMethod);
+}
 
-    [self trick_viewWillAppear:animated];
+-(void)trick_viewWillDisappear:(BOOL)animated
+{
+    
+    [self trick_viewWillDisappear:animated];
+    NSBundle *mainB = [NSBundle bundleForClass:[self class]];
+    if (mainB == [NSBundle mainBundle]) {
+        [UIApplication sharedApplication].currentViewController = nil;
+    }
+}
 
+-(void)trick_viewDidLoad
+{
+    [self trick_viewDidLoad];
+    
     NSBundle *mainB = [NSBundle bundleForClass:[self class]];
     if (mainB == [NSBundle mainBundle]) {
         [UIApplication sharedApplication].currentViewController = self;
     }
 }
-
 
 
 
