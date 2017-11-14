@@ -47,23 +47,32 @@ NSAssert(nav != nil,@"****just UINavigationController can use push and pop****")
 [nav popToViewController:ViewController animated:beAnimated];
 
 
-
 #define SDCRoutePresentToVC(ViewController,beAnimated)\
-UINavigationController *nv=[[UINavigationController alloc]initWithRootViewController:ViewController];\
-[[UIApplication sharedApplication].currentViewController presentViewController:nv animated:beAnimated completion:nil];
+UINavigationController *nav = [UIApplication sharedApplication].currentViewController.navigationController;\
+NSAssert(nav != nil,@"****just UINavigationController can use push and pop****");\
+CATransition *transition = [CATransition animation];\
+transition.duration = 0.35f;\
+transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];\
+transition.type = kCATransitionMoveIn;\
+transition.subtype = kCATransitionFromTop;\
+[nav.view.layer addAnimation:transition forKey:nil];\
+[nav pushViewController:vc animated:NO];\
 
 
 #define SDCRouteDismissToVC(beAnimated)\
 UINavigationController *nav = [UIApplication sharedApplication].currentViewController.navigationController;\
-if(nav == nil){[[UIApplication sharedApplication].currentViewController dismissViewControllerAnimated:beAnimated completion:nil];}else{[[UIApplication sharedApplication].currentViewController.navigationController dismissViewControllerAnimated:beAnimated completion:nil];}\
-
-
+NSAssert(nav != nil,@"****just UINavigationController can use push and pop****");\
+CATransition *transition = [CATransition animation];\
+transition.duration = 0.35f;\
+transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];\
+transition.type = kCATransitionReveal;\
+transition.subtype = kCATransitionFromBottom;\
+[nav.view.layer addAnimation:transition forKey:nil];\
+[nav popViewControllerAnimated:NO];\
 
 
 //webview的标题
 static const NSString *sdcNavTitleKey = @"navTitle";
-
-
 
 
 
