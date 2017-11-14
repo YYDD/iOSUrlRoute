@@ -58,6 +58,7 @@
 -(void)back
 {
     [[SDCUrlRouteCenter sharedCenter]closeWithAnimated:YES];
+
     
 }
 

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SDCUrlRoute.h"
+#import "SDCUrlRouteDefineKey.h"
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -94,7 +95,9 @@
     switch (indexPath.row) {
         case 0:
         {
-            [[SDCUrlRouteCenter sharedCenter]open:localRouteUrl(RouteToTestVC) animated:YES];
+//            [[SDCUrlRouteCenter sharedCenter]open:localRouteUrl(RouteToTestVC) animated:YES];
+            [[SDCUrlRouteCenter sharedCenter]open:localRouteUrl(RouteToTestVC) animated:YES URLRedirectType:kUrlRedirectPresent];
+            
         }
             break;
         case 1:
